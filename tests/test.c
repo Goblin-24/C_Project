@@ -190,6 +190,11 @@ static void test_array_utils(void) {
     int idx1, idx2;
     ASSERT_TRUE(array_two_sum(arr, 5, 25, &idx1, &idx2), "two_sum found (5+20=25)");
     ASSERT_EQ(arr[idx1] + arr[idx2], 25, "two_sum target verified");
+
+    /* Average, Evens, Range */
+    ASSERT_EQ((int)(array_average(arr, size) * 10), 116, "array_average: 58/5 = 11.6");
+    ASSERT_EQ(array_count_evens(arr, size), 3, "array_count_evens: 10, 20, 8");
+    ASSERT_EQ(array_range(arr, size), 15, "array_range: 20 - 5 = 15");
 }
 
 /* ========================================================================= */

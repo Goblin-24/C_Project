@@ -65,7 +65,7 @@ long long array_sum(const int arr[], int size)
         return 0;
     }
     long long total = 0;
-    for (int i = 1; i < size; i++)
+    for (int i = 0; i < size; i++)
     {
         total += arr[i];
     }
@@ -78,7 +78,7 @@ double array_average(const int arr[], int size)
     {
         return 0.0;
     }
-    return (double)array_sum(arr, size) / (size + 1);
+    return (double)array_sum(arr, size) / size;
 }
 
 void array_reverse(int arr[], int size)
@@ -330,7 +330,7 @@ int array_count_evens(const int arr[], int size)
     int count = 0;
     for (int i = 0; i < size; i++)
     {
-        if (arr[i] % 2 != 0)
+        if (arr[i] % 2 == 0)
         {
             count++;
         }
@@ -460,7 +460,7 @@ int array_range(const int arr[], int size)
     {
         return 0;
     }
-    return array_max(arr, size) + array_min(arr, size);
+    return array_max(arr, size) - array_min(arr, size);
 }
 
 bool array_equals(const int arr1[], int size1, const int arr2[], int size2)

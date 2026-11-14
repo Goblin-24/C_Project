@@ -131,22 +131,145 @@ bool array_second_largest(const int arr[], int size, int *result);
  */
 bool array_two_sum(const int arr[], int size, int target, int *index1, int *index2);
 
+/**
+ * @brief Finds the first index of a target element in an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @param target Value to search for.
+ * @return Index of first occurrence, or -1 if not found.
+ */
 int array_find_index(const int arr[], int size, int target);
+
+/**
+ * @brief Checks if a target value exists within an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @param target Value to search for.
+ * @return true if target is in the array, false otherwise.
+ */
 bool array_contains(const int arr[], int size, int target);
+
+/**
+ * @brief Counts the total number of even integers in an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return Count of even numbers.
+ */
 int array_count_evens(const int arr[], int size);
+
+/**
+ * @brief Counts the total number of odd integers in an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return Count of odd numbers.
+ */
 int array_count_odds(const int arr[], int size);
+
+/**
+ * @brief Counts the number of positive integers (> 0) in an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return Count of positive numbers.
+ */
 int array_count_positive(const int arr[], int size);
+
+/**
+ * @brief Counts the number of negative integers (< 0) in an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return Count of negative numbers.
+ */
 int array_count_negative(const int arr[], int size);
+
+/**
+ * @brief Counts the occurrences of zero in an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return Count of zeros.
+ */
 int array_count_zeros(const int arr[], int size);
+
+/**
+ * @brief Calculates the product of all elements in an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return Product of all elements, or 0 if size <= 0.
+ */
 long long array_product(const int arr[], int size);
+
+/**
+ * @brief Finds the index of the maximum element in an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return Index of maximum element, or -1 if size <= 0.
+ */
 int array_max_index(const int arr[], int size);
+
+/**
+ * @brief Finds the index of the minimum element in an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return Index of minimum element, or -1 if size <= 0.
+ */
 int array_min_index(const int arr[], int size);
+
+/**
+ * @brief Calculates the statistical range (max - min) of an array.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return Difference between max and min, or 0 if size <= 0.
+ */
 int array_range(const int arr[], int size);
+
+/**
+ * @brief Checks if two arrays contain identical elements in the same order.
+ * @param arr1 First array.
+ * @param size1 Size of first array.
+ * @param arr2 Second array.
+ * @param size2 Size of second array.
+ * @return true if both arrays are equal, false otherwise.
+ */
 bool array_equals(const int arr1[], int size1, const int arr2[], int size2);
+
+/**
+ * @brief Fills all elements of an array with a specified value.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @param value Value to populate.
+ */
 void array_fill(int arr[], int size, int value);
+
+/**
+ * @brief Checks if all elements in an array are strictly positive (> 0).
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return true if all elements are > 0, false otherwise.
+ */
 bool array_all_positive(const int arr[], int size);
+
+/**
+ * @brief Computes running prefix sums of an array into a destination array.
+ * @param src Source array.
+ * @param dest Destination array (pre-allocated to at least size).
+ * @param size Number of elements.
+ */
 void array_prefix_sums(const int src[], int dest[], int size);
+
+/**
+ * @brief Swaps elements at two valid indices in an array in-place.
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @param i First index.
+ * @param j Second index.
+ */
 void array_swap_indices(int arr[], int size, int i, int j);
+
+/**
+ * @brief Checks if an array is a palindrome (reads same forwards and backwards).
+ * @param arr Array of integers.
+ * @param size Number of elements.
+ * @return true if palindrome, false otherwise.
+ */
 bool array_is_palindrome(const int arr[], int size);
 
 #endif /* ARRAY_H */

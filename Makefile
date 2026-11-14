@@ -58,24 +58,45 @@ $(TEST_BIN): $(LIB_OBJS) $(TEST_DIR)/test.c | $(BIN_DIR)
 # Run unit tests
 test: $(TEST_BIN)
 	@echo ""
+ifeq ($(OS),Windows_NT)
+	@$(TEST_BIN)
+else
 	@./$(TEST_BIN)
+endif
 
 # Run the demonstration example
 run: $(EXAMPLE_BIN)
 	@echo ""
+ifeq ($(OS),Windows_NT)
+	@$(EXAMPLE_BIN)
+else
 	@./$(EXAMPLE_BIN)
+endif
 
 # Ensure directory output folders exist
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+ifeq ($(OS),Windows_NT)
+	@if not exist $(OBJ_DIR) mkdir $(OBJ_DIR)
+else
+	@mkdir -p $(OBJ_DIR)
+endif
 
 $(BIN_DIR):
-	mkdir -p $(BIN_DIR)
+ifeq ($(OS),Windows_NT)
+	@if not exist $(BIN_DIR) mkdir $(BIN_DIR)
+else
+	@mkdir -p $(BIN_DIR)
+endif
 
 # Remove build artifacts
 clean:
 	@echo "Cleaning up build artifacts..."
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+ifeq ($(OS),Windows_NT)
+	@if exist $(OBJ_DIR) rmdir /s /q $(OBJ_DIR)
+	@if exist $(BIN_DIR) rmdir /s /q $(BIN_DIR)
+else
+	@rm -rf $(OBJ_DIR) $(BIN_DIR)
+endif
 	@echo "Clean finished."
 
 # Help menu

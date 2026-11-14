@@ -195,6 +195,28 @@ static void test_array_utils(void) {
     ASSERT_EQ((int)(array_average(arr, size) * 10), 116, "array_average: 58/5 = 11.6");
     ASSERT_EQ(array_count_evens(arr, size), 3, "array_count_evens: 10, 20, 8");
     ASSERT_EQ(array_range(arr, size), 15, "array_range: 20 - 5 = 15");
+
+    /* Product, Fill, Palindrome, Prefix Sums, All Positive */
+    int prod_arr[] = {2, 3, 4};
+    ASSERT_EQ(array_product(prod_arr, 3), 24, "array_product");
+
+    int fill_arr[4];
+    array_fill(fill_arr, 4, 7);
+    ASSERT_EQ(fill_arr[0], 7, "array_fill elem 0");
+    ASSERT_EQ(fill_arr[3], 7, "array_fill elem 3");
+
+    ASSERT_TRUE(array_all_positive(arr, size), "array_all_positive: true");
+
+    int pal_arr[] = {1, 2, 3, 2, 1};
+    ASSERT_TRUE(array_is_palindrome(pal_arr, 5), "array_is_palindrome: true");
+    ASSERT_TRUE(!array_is_palindrome(arr, size), "array_is_palindrome: false");
+
+    int pref_dest[3];
+    int pref_src[] = {1, 2, 3};
+    array_prefix_sums(pref_src, pref_dest, 3);
+    ASSERT_EQ(pref_dest[0], 1, "array_prefix_sums [0]");
+    ASSERT_EQ(pref_dest[1], 3, "array_prefix_sums [1]");
+    ASSERT_EQ(pref_dest[2], 6, "array_prefix_sums [2]");
 }
 
 /* ========================================================================= */
@@ -281,6 +303,11 @@ static void test_searching(void) {
     /* Recursive binary search */
     ASSERT_EQ(binary_search_recursive(arr, 0, size - 1, 21), 3, "binary_search_recursive found");
     ASSERT_EQ(binary_search_recursive(arr, 0, size - 1, 99), -1, "binary_search_recursive missing");
+
+    /* Binary search with duplicates */
+    int dup_sorted[] = {1, 2, 2, 2, 3};
+    int dup_idx = binary_search(dup_sorted, 5, 2);
+    ASSERT_TRUE(dup_idx >= 1 && dup_idx <= 3, "binary_search: finds matching index for duplicate element");
 }
 
 /* ========================================================================= */

@@ -72,7 +72,7 @@ bool c_is_prime(int n) {
     if (n % 2 == 0 || n % 3 == 0) {
         return false;
     }
-    for (int i = 5; i * i <= n; i += 6) {
+    for (int i = 5; (long long)i * i <= n; i += 6) {
         if (n % i == 0 || n % (i + 2) == 0) {
             return false;
         }
@@ -104,17 +104,19 @@ int c_lcm(int a, int b) {
 }
 
 int c_reverse_num(int n) {
-    int sign = (n < 0) ? -1 : 1;
-    int num = c_abs(n);
-    int reversed = 0;
+    long long num = (n < 0) ? -(long long)n : (long long)n;
+    long long reversed = 0;
 
     while (num > 0) {
-        int last_digit = num % 10;
-        reversed = reversed * 10 + last_digit;
+        reversed = reversed * 10 + (num % 10);
         num /= 10;
     }
 
-    return sign * reversed;
+    if (n < 0) {
+        reversed = -reversed;
+    }
+
+    return (int)reversed;
 }
 
 bool c_is_palindrome_num(int n) {

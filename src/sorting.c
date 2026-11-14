@@ -8,6 +8,7 @@
 #include "sorting.h"
 #include <stddef.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 static void swap(int *a, int *b) {
     int temp = *a;
@@ -77,8 +78,13 @@ static void merge(int arr[], int left, int mid, int right) {
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    int left_arr[n1];
-    int right_arr[n2];
+    int *left_arr = (int *)malloc((size_t)n1 * sizeof(int));
+    int *right_arr = (int *)malloc((size_t)n2 * sizeof(int));
+    if (left_arr == NULL || right_arr == NULL) {
+        free(left_arr);
+        free(right_arr);
+        return;
+    }
 
     for (int i = 0; i < n1; i++) {
         left_arr[i] = arr[left + i];
@@ -106,6 +112,9 @@ static void merge(int arr[], int left, int mid, int right) {
     while (j < n2) {
         arr[k++] = right_arr[j++];
     }
+
+    free(left_arr);
+    free(right_arr);
 }
 
 void merge_sort(int arr[], int left, int right) {
